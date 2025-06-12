@@ -1,0 +1,112 @@
+.skill {
+  padding: 0 0 50px 0;
+  padding-top: 170px;
+  /* position: relative; */
+  overflow: hidden; 
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/736x/31/85/75/3185755dfef697cf04cca00bd62e9ca6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+  width: 100vw;
+  color: rgb(208, 132, 60);
+}
+
+.skill h2 {
+	font-size: 60px;
+	font-weight: 700;
+  text-align: center;
+}
+
+.skill p {
+    color: #B8B8B8;
+    font-size: 22px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    margin-left: 3cm;
+    text-align: center;
+}
+
+.progress-bar-container {
+  background-color: #ddd;
+  border-radius: 10px;
+  height: 20px;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background-color: #0dcaf0;
+  height: 100%;
+  text-align: right;
+  padding-right: 8px;
+  line-height: 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.skill-card {
+  padding: 20px;
+  margin-left:10;
+  text-align: center;
+}
+
+.skill-card-box {
+  position: relative;
+  background-image: url('https://img.pikbest.com/wp/202349/laptop-computer-3d-illustration-of-brown-shelf-background-with-a_9786614.jpg!bw700');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 20px; /* Centers the card with equal left-right spacing */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color: black;
+  font-size: 24px;
+  /* margin-left:3cm; */
+}
+
+.skill-card-box:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.skill-progress {
+  border-radius: 10px;
+  background-color: #ddd;
+  border-radius: 10px;
+  height: 10px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9a6010, #5a3105);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  padding-right: 10px;
+  transition: width 1s ease;
+}
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* 👈 Center horizontally */
+  gap: 30px;                 /* 👈 Spacing between cards */
+  margin-top: 2cm;
+}
+

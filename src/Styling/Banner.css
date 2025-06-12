@@ -1,0 +1,117 @@
+/* .banner {
+  margin-top: 0;
+  padding: 260px 0 100px 0;
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/736x/31/85/75/3185755dfef697cf04cca00bd62e9ca6.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+} */
+.banner {
+  padding: 0 0 50px 0;
+  padding-top: 150px;
+  /* position: relative; */
+  overflow: hidden; 
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/736x/31/85/75/3185755dfef697cf04cca00bd62e9ca6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+  width: 100vw;
+  color: rgb(208, 132, 60);
+}
+
+.banner .tagline {
+  width: 35%;
+  font-weight: 700;
+  margin-top: 0cm;
+  margin-left: 1cm;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(90.21deg, rgba(224, 149, 70, 0.915) -5.91%, rgb(125, 62, 7) 111.58%);
+  border: 1px solid rgba(245, 203, 203, 0.5);
+  font-size: 20px;
+  /* margin-bottom: 16px; */
+  /* display: inline-block; */
+  color: white;
+}
+.banner h1 {
+  font-size: 65px;
+  font-weight: 700;
+  margin-left: 1cm;
+  margin-top: 1cm;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+  color: rgb(208, 132, 60);
+}
+.banner p {
+  color: rgb(243, 208, 175);
+  font-size: 18px;
+  margin-left: 1cm;
+  margin-bottom: 2cm;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+.banner button {
+  color: white;
+  width: 52%;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 1cm;
+  margin-top: 30px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.20);
+  /* background: linear-gradient(90.21deg, rgba(224, 149, 70, 0.915) -20.91%, rgb(125, 62, 7) 90.58%); */
+}
+.banner button svg {
+  font-size: 25px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+.banner button:hover svg {
+  margin-left: 25px;
+}
+.banner img {
+  animation: updown 3s linear infinite;
+}
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+.txt-rotate > .wrap {
+  border-right: 0.08em solid #666;
+}
+@media (max-width: 1024px) {
+  .skills {
+    padding: 100px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .skills {
+    padding: 110px 20px;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+
+

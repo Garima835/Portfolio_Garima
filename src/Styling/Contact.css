@@ -1,0 +1,154 @@
+.contact {
+  padding: 60px 0 200px 0;
+  padding-top: 200px;
+  /* position: relative; */
+  overflow: hidden; 
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/736x/31/85/75/3185755dfef697cf04cca00bd62e9ca6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+  width: 100vw;
+  color: rgb(208, 132, 60);
+} 
+.contact img {
+  width: 100%;
+  margin-left:30;
+}
+.contact h2 {
+	font-size: 55px;
+	font-weight: 700;
+  margin-bottom: 30px;
+}
+.contact form input, .contact form textarea {
+  width: 80%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  margin: 0 0 8px 0;
+  padding: 18px 26px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  transition: 0.3s ease-in-out;
+}
+.contact form input:focus, .contact form textarea:focus {
+  background: rgba(255, 255, 255, 1);
+  color: #121212;
+}
+.contact form input::placeholder, .contact form textarea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
+  color: #121212;
+  opacity: 0.8;
+}
+.contact form button {
+  font-weight: 700;
+  color: #000;
+  background: linear-gradient(90.21deg, rgba(224, 149, 70, 0.915) -5.91%, rgb(125, 62, 7) 111.58%);
+  padding: 14px 48px;
+  font-size: 18px;
+  margin-top: 25px;
+  border-radius: 30px;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+.contact form button span {
+  z-index: 1;
+  position: relative;
+}
+.contact form button:hover {
+  color: #fff;
+}
+.contact form button::before {
+  content: "";
+  background: #121212;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+.contact form button:hover::before {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .skills {
+    padding: 100px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .skills {
+    padding: 110px 20px;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+.contact p {
+  font-size: 22px;
+  margin: 10px 0;
+  color: #ece7e7;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin-left: 0cm;
+  /* margin: auto; */
+  animation: fadeIn 1s ease-in-out;
+}
+
+.profile-card a {
+  color: #00aaff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.profile-card h2 {
+  color: #e6aa4b;
+  text-decoration: none;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 30px;
+}
+
+.profile-card a:hover {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.highlight {
+  color: #f29c11;
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+.download-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #ff9900;
+}
+
