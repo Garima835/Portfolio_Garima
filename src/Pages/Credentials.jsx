@@ -6,7 +6,7 @@ import gmail from "../Images/gmail.png";
 import icon1 from '../Images/linked.png';
 import icon4 from '../Images/github.png';
 import img from '../Images/credential_page.avif';
-import name from "../Images/name.png";
+import name from "../Images/Name.png";
 
 import '../Styling/Font.css';
 import '../Styling/credentials.css';
