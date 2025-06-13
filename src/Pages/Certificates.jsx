@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {  } from 'react-router-dom';
 import { Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard.jsx";
-import projImg1 from "../Images/Card1.png";
+import projImg1 from "../Images/card1.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { doc, getDoc } from "firebase/firestore";
