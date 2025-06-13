@@ -9,7 +9,7 @@ import img from '../Images/credential_page.avif';
 import name from "../Images/Name.png";
 
 import '../Styling/Font.css';
-import '../Styling/credentials.css';
+import '../Styling/Credentials.css';
 
 export const Credentials = () => {
   const navigate = useNavigate();
