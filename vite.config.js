@@ -8,8 +8,6 @@ export default defineConfig({
     host: 'localhost',
   },
   build: {
-    outDir: 'dist', 
-    rollupOptions: {
-    },
-  },
+    outDir: 'dist',  
+  }
 });
