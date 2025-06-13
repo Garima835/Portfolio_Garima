@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from 'react-multi-carousel';
-import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import 'react-multi-carousel/lib/styles.css';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
@@ -76,24 +76,29 @@ React.useEffect(() => {
   // const credentialsId = queryParams.get('credId');
 
   const handleSubmit = async () => {
-    const allData = {
-      data,
-      summary,
-      createdAt: serverTimestamp()
-    };
-
-    try {
-      const docRef = await addDoc(collection(db, "portfolios"), allData);
-      const formId = docRef.id;
-      alert("🎉 Data saved successfully! Your Portfolio ID is: " + formId);
-
-      // ✅ Navigate to one page only; links to skills/projects can be added there
-      navigate(`/home?formId=${formId}&credId=${credentialsDocId}`);
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("❌ Failed to save data. Check console for error.");
-    }
+  const allData = {
+    data,
+    summary,
+    createdAt: serverTimestamp()
   };
+
+  try {
+    const docRef = await addDoc(collection(db, "portfolios"), allData);
+    const formId = docRef.id;
+
+    // ✅ Store in localStorage
+    localStorage.setItem("formId", formId);
+    localStorage.setItem("credId", credentialsDocId);
+
+    alert("🎉 Data saved successfully! Your Portfolio ID is: " + formId);
+
+    // Navigate to Home (without query also works now)
+    navigate(`/home`);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    alert("❌ Failed to save data. Check console for error.");
+  }
+};
 
   const renderCards = (type) => {
     if (counts[type] === 0) return <p>No {type} added yet.</p>;

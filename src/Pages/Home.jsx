@@ -23,51 +23,56 @@ export const Home = () => {
   const [storedData, setStoredData] = useState(null);
   const period = 2000;
 
-  const location = useLocation(); // ✅ Use hook at top
+  const location = useLocation();
   const navigate = useNavigate();
 
+  // Step 1: Get from URL or fallback to localStorage
   const query = new URLSearchParams(location.search);
-  const formId = query.get("formId");
-  const credId = query.get("credId");
+  const urlFormId = query.get("formId");
+  const urlCredId = query.get("credId");
 
-  console.log("🧭 formId:", formId);
-  console.log("🧭 credId:", credId);
+  // Step 2: Prefer URL, fallback to localStorage
+  const formId = urlFormId || localStorage.getItem("formId");
+  const credId = urlCredId || localStorage.getItem("credId");
 
- useEffect(() => {
-  const fetchSummary = async () => {
-    if (!formId) {
-      setError("No formId found in URL.");
-      setLoading(false);
-      return;
-    }
+  // Step 3: Save to localStorage (when from URL)
+  useEffect(() => {
+    if (urlFormId) localStorage.setItem("formId", urlFormId);
+    if (urlCredId) localStorage.setItem("credId", urlCredId);
+  }, [urlFormId, urlCredId]);
 
-    try {
-      const docRef = doc(db, "portfolios", formId);
-      const docSnap = await getDoc(docRef);
+  useEffect(() => {
+    const fetchSummary = async () => {
+      if (!formId) {
+        setError("No formId found in URL or localStorage.");
+        setLoading(false);
+        return;
+      }
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        console.log("✅ Firestore raw data:", data); // 👈 Add this
+      try {
+        const docRef = doc(db, "portfolios", formId);
+        const docSnap = await getDoc(docRef);
 
-  const innerData = data?.data || {};
-  const summaryText = data?.summary || "No summary found.";
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const innerData = data?.data || {};
+          const summaryText = data?.summary || "No summary found.";
 
-  console.log("💬 Summary from Firestore:", summaryText);
+          setStoredData(innerData);
+          setSummary(summaryText);
+        } else {
+          setError("Portfolio not found.");
+        }
+      } catch (err) {
+        console.error("🔥 Error fetching summary:", err);
+        setError("Failed to load summary. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  setStoredData(innerData);
-  setSummary(summaryText);
-}
-}catch (err) {
-      console.error("🔥 Error fetching summary:", err);
-      setError("Failed to load summary. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchSummary();
-}, [formId]);
-
+    fetchSummary();
+  }, [formId]);
 
   useEffect(() => {
     const ticker = setInterval(() => tick(), delta);
@@ -99,7 +104,6 @@ export const Home = () => {
 
   if (loading || !storedData) return <p style={{ padding: "2rem" }}>Loading your portfolio...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
-  console.log("🏠 Home page summary state:", summary);
 
   return (
     <section className="banner" id="home">
@@ -111,31 +115,34 @@ export const Home = () => {
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi! I'm Judy`} <span className="txt-rotate"><span className="wrap">{text}</span></span></h1>
                 <p>{summary}</p>
-                <button onClick={() => {
-                  navigate('/skills', { state: { skills: storedData.skills || [] } }); }}>
+
+                <button onClick={() => navigate('/skills')}>
                   View Skills <ArrowRightCircle size={25} />
                 </button>
-                <button onClick={() => {
-                  navigate(`/projects?id=${formId}`); }}>
+
+                <button onClick={() => navigate('/projects')}>
                   View Projects and Research Work <ArrowRightCircle size={25} />
                 </button>
-                <button onClick={() => {
-                  navigate(`/certificates?id=${formId}`); }}>
+
+                <button onClick={() => navigate('/certificates')}>
                   View Certificates <ArrowRightCircle size={25} />
                 </button>
-                <button onClick={() => {
-                  navigate(`/contact?id=${credId}`); }}>
+
+                <button onClick={() => navigate('/contact')}>
                   View Contact <ArrowRightCircle size={25} />
                 </button>
-              </div>}
+              </div>
+            }
           </TrackVisibility>
         </Col>
+
         <Col xs={12} md={6} xl={5}>
           <TrackVisibility>
             {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                 <img src={headerImg} alt="Header Img" />
-              </div>}
+              </div>
+            }
           </TrackVisibility>
         </Col>
       </Row>

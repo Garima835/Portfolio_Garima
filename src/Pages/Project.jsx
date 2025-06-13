@@ -13,17 +13,19 @@ export const Project = () => {
   const [projects, setProjects] = useState([]);
   const [research, setResearch] = useState([]);
   const [patents, setPatents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const portfolioId = new URLSearchParams(window.location.search).get('id');
-      if (!portfolioId) {
-        console.warn("No portfolio ID found in URL.");
-        return;
-      }
+    const formId = localStorage.getItem("formId");
+    if (!formId) {
+      console.warn("❌ No formId found in localStorage.");
+      setLoading(false);
+      return;
+    }
 
+    const fetchData = async () => {
       try {
-        const docRef = doc(db, "portfolios", portfolioId);
+        const docRef = doc(db, "portfolios", formId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -50,17 +52,20 @@ export const Project = () => {
             description: item.description,
             imgUrl: projImg1
           })));
-
         } else {
-          console.warn("No such document found.");
+          console.warn("❌ No such document found.");
         }
       } catch (error) {
-        console.error("Error fetching project data from Firestore:", error);
+        console.error("🔥 Error fetching project data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) return <p style={{ padding: "2rem" }}>Loading projects and research...</p>;
 
   return (
     <section className="project" id="project">
@@ -70,7 +75,7 @@ export const Project = () => {
             {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <h2><strong>Projects and Research Work</strong></h2>
-                <p>Here, you’ll find a blend of my web development expertise, diverse coding skills, and software projects crafted with care. Alongside my hands-on projects, I’m passionate about exploring innovative ideas through research, constantly learning and pushing the boundaries of technology. Dive in to see how I turn concepts into reality and keep growing as a developer and researcher.</p>
+                <p>Here, you’ll find a blend of my web development expertise, diverse coding skills, and software projects crafted with care. Alongside my hands-on projects, I’m passionate about exploring innovative ideas through research, constantly learning and pushing the boundaries of technology.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center">
                     <Nav.Item>
@@ -120,9 +125,9 @@ export const Project = () => {
                   </Tab.Content>
                 </Tab.Container>
               </div>}
-          </TrackVisibility>
-        </Col>
-      </Row>
-    </section>
+              </TrackVisibility>
+              </Col>
+            </Row>
+              </section>
   );
 };

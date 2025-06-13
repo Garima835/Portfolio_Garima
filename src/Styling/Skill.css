@@ -18,6 +18,7 @@
 	font-size: 60px;
 	font-weight: 700;
   text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
 .skill p {
@@ -25,8 +26,9 @@
     font-size: 22px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    margin-left: 3cm;
+    /* margin-left: 3cm; */
     text-align: center;
+    transition: 0.8s ease-in-out;
 }
 
 .progress-bar-container {
@@ -47,13 +49,14 @@
   color: white;
   font-weight: bold;
   border-radius: 10px 0 0 10px;
-  transition: width 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .skill-card {
   padding: 20px;
   margin-left:10;
   text-align: center;
+  transition: 0.8s ease-in-out;
 }
 
 .skill-card-box {
@@ -100,7 +103,7 @@
   color: white;
   font-weight: bold;
   padding-right: 10px;
-  transition: width 1s ease;
+  transition: 1s ease;
 }
 .skills-container {
   display: flex;
@@ -108,5 +111,6 @@
   justify-content: center;   /* 👈 Center horizontally */
   gap: 30px;                 /* 👈 Spacing between cards */
   margin-top: 2cm;
+  transition: 0.3s ease-in-out;
 }
 

@@ -10,12 +10,13 @@ import "../Styling/Font.css";
 import "../Styling/Contact.css";
 
 export const Contact = () => {
+
   const [formData, setFormData] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchContactData = async () => {
-      const credId = new URLSearchParams(window.location.search).get('id');
+      const credId = localStorage.getItem("credId");
       if (!credId) {
         console.warn("No credentials ID found in URL.");
         return;
@@ -123,3 +124,4 @@ export const Contact = () => {
     </section>
   );
 };
+
